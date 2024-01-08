@@ -1,23 +1,23 @@
-import Link from "next/link"
-import { useCurrentUser } from "src/users/hooks/useCurrentUser"
-import logout from "src/auth/mutations/logout"
-import { useMutation } from "@blitzjs/rpc"
-import { Routes } from "@blitzjs/next"
+import Link from "next/link";
+import { useCurrentUser } from "src/users/hooks/useCurrentUser";
+import logout from "src/auth/mutations/logout";
+import { useMutation } from "@blitzjs/rpc";
+import { Routes } from "@blitzjs/next";
 
 /*
  * This file is just for a pleasant getting started page for your new app.
  * You can delete everything in here and start from scratch if you like.
  */
 export const UserInfo = () => {
-  const currentUser = useCurrentUser()
-  const [logoutMutation] = useMutation(logout)
+  const currentUser = useCurrentUser();
+  const [logoutMutation] = useMutation(logout);
 
   if (currentUser) {
     return (
       <>
         <button
           onClick={async () => {
-            await logoutMutation()
+            await logoutMutation();
           }}
         >
           Logout
@@ -28,7 +28,7 @@ export const UserInfo = () => {
           User role: <code>{currentUser.role}</code>
         </div>
       </>
-    )
+    );
   } else {
     return (
       <>
@@ -39,6 +39,6 @@ export const UserInfo = () => {
           <strong>Login</strong>
         </Link>
       </>
-    )
+    );
   }
-}
+};
